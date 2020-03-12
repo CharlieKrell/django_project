@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Post
 
 # Create your views here.
 def index(request):
@@ -6,22 +7,6 @@ def index(request):
 
 def business(request):
 	context = {
-	'posts' : posts
+	'posts' : Post.objects.all()
 	}
 	return render(request, 'blog/business.html', context)
-
-posts = [
-
-{
-	'author' : 'Loonycorn',
-	'title' : 'Blog Post 1',
-	'content' : 'First post content',
-	'date_posted' : 'October 25, 2019'
-},
-{ 
-	'author' : 'Test',
-	'title' : 'Blog Post 2',
-	'content' : 'Second post content',
-	'date_posted' : 'October 26, 2019'
-}
-]
